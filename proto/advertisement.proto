@@ -1,0 +1,36 @@
+syntax = "proto3";
+package hu.fluffy;
+
+import "google/protobuf/empty.proto";
+
+option java_multiple_files = true;
+
+
+enum condition {
+    new = 0;
+    used = 1;
+}
+
+message advertisement {
+    string user = 0;
+    reserved 1;
+    string message = 2;
+    condition condition = 3;
+    //map<string, string> comments = 4;
+}
+
+
+message addAdvertisementReq {
+    advertisement advertisement = 0; 
+}
+
+
+message getAllAdvertisementResp {
+    repeated advertisement advertisement = 0;
+}
+
+service AdvertisementService {
+    rpc addAdvertisement(addAdvertisementReq) returns (google.protobuf.Empty);
+    rpc getAllAdvertisement(google.protobuf.Empty) returns (getAllAdvertisementResp);
+    rpc getAllAdvertisementStream(google.protobuf.Empty) returns (stream advertisement);
+}
