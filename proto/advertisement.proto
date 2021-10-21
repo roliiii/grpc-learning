@@ -12,21 +12,21 @@ enum condition {
 }
 
 message advertisement {
-    string user = 0;
-    reserved 1;
-    string message = 2;
-    condition condition = 3;
-    //map<string, string> comments = 4;
+    string user = 1;
+    reserved 2;
+    string message = 3;
+    condition condition = 4;
+    //map<string, string> comments = 5;
 }
 
 
 message addAdvertisementReq {
-    advertisement advertisement = 0; 
+    advertisement advertisement = 1; 
 }
 
 
 message getAllAdvertisementResp {
-    repeated advertisement advertisement = 0;
+    repeated advertisement advertisement = 1;
 }
 
 service AdvertisementService {
